@@ -52,7 +52,7 @@ class ImporterController < ApplicationController
 			end
 		end 
 
-	Dir["#{Rails.root}/public/xml_files/*.xml"].first(20).each do |file| # .first(10) to limit import
+	Dir["#{Rails.root}/public/xml_files/*.xml"].each do |file| # .first(10) to limit import
 		f = File.open(file)
 		doc = Nokogiri::XML(f)
 		root = doc.root
@@ -96,27 +96,25 @@ class ImporterController < ApplicationController
 			# FOR AGE: SEPARATELY STORES IMPORTED VALUE WITH MONTHS VS ALGORITHM VALUEs
 			@trial.originalminage = set_minvalue_for_age(get_from_xpath("//minimum_age",root))
 			@trial.originalmaxage = set_maxvalue_for_age(get_from_xpath("//maximum_age",root))		
-			# @trial.minimum_age = set_minvalue_for_age(get_from_xpath("//minimum_age",root))
-			# @trial.maximum_age = set_maxvalue_for_age(get_from_xpath("//maximum_age",root))
 
-			# doc.xpath("//location",root).each do |site|
+			doc.xpath("//location",root).each do |site|
 		     	site_counter += 1
-		 #    	@site = Site.new
-		 #    	@site.facility = get_from_xpath("facility/name",site)
-		 #    	@site.city = get_from_xpath("facility/address/city",site)
-		 #    	@site.state = get_from_xpath("facility/address/state",site)
-		 #    	@site.zip_code = get_from_xpath("facility/address/zip",site)
-		 #    	@site.country = get_from_xpath("facility/address/country",site)
-		 #    	@site.status = get_from_xpath("status",site)
+		    	@site = Site.new
+		    	@site.facility = get_from_xpath("facility/name",site)
+		    	@site.city = get_from_xpath("facility/address/city",site)
+		    	@site.state = get_from_xpath("facility/address/state",site)
+		    	@site.zip_code = get_from_xpath("facility/address/zip",site)
+		    	@site.country = get_from_xpath("facility/address/country",site)
+		    	@site.status = get_from_xpath("status",site)
 
-		 #    	@site.contact_name = get_from_xpath("contact/last_name",site)
-		 #    	@site.contact_phone = get_from_xpath("contact/phone",site)
-		 #    	@site.contact_phone_ext = get_from_xpath("contact/phone_ext",site)
-		 #    	@site.contact_phone_email = get_from_xpath("contact/email",site)
+		    	@site.contact_name = get_from_xpath("contact/last_name",site)
+		    	@site.contact_phone = get_from_xpath("contact/phone",site)
+		    	@site.contact_phone_ext = get_from_xpath("contact/phone_ext",site)
+		    	@site.contact_phone_email = get_from_xpath("contact/email",site)
 
-			# 	@trial.sites << @site
-			# 	@site.save
-			# end
+				@trial.sites << @site
+				@site.save
+			end
 
 
 			@trial.save
