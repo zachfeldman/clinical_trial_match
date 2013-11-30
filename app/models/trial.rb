@@ -1,8 +1,8 @@
 class Trial < ActiveRecord::Base
 	validates :title, :description, :sponsor, :country, :focus, presence: true
 	validates :nct_id, uniqueness: true
+	before_save :enumerate_age_value
 	
-
 	scope :control?, -> (vt) {
 		if vt == "control"
 			where(healthy_volunteers: "Accepts Healthy Volunteers")
@@ -17,7 +17,8 @@ class Trial < ActiveRecord::Base
 		end 
 	}
 	scope :search_for, -> (query) {
-		where('title ILIKE :query OR description ILIKE :query', query: "%#{query}%")
+		#where('title ILIKE :query OR description ILIKE :query', query: "%#{query}%")
+		where('originalminage ILIKE :query OR originalmaxage ILIKE :query', query: "%#{query}%")
 	}
 
 
@@ -85,6 +86,11 @@ class Trial < ActiveRecord::Base
 
 
 private
+
+	def enumerate_age_value
+		self.minimum_age = self.originalminage
+		self.maximum_age = self.originalmaxage
+	end
 
 	def self.close_to_logic(coordinates, td)
 		# ERIC's refactoring suggestion = self.all.collect { |trial| trial.sites }.flatten.select

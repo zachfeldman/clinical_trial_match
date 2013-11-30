@@ -19,11 +19,13 @@ class ImporterController < ApplicationController
 
 	# @TODO rake task route to automate this. every day. import module rake file
 	
-	Dir["#{Rails.root}/public/xml_files/*.xml"].each do |file| # .first(10) to limit import
+	# OPEN ALL XML FILES AND PARSET THEM INTO THE DATABASE
+	Dir["#{Rails.root}/public/xml_files/*.xml"].first(3).each do |file| # .first(10) to limit import
 		f = File.open(file)
 		doc = Nokogiri::XML(f)
 		root = doc.root
 
+		# HELPER METHOD FOR IDENTIFYING DIRECTORY DEPTH
 		def get_from_xpath(path_and_name, directory, merge=false)
 			if directory.xpath("#{path_and_name}").nil?
 				return ""	
@@ -36,8 +38,24 @@ class ImporterController < ApplicationController
 			else
 				return directory.xpath("#{path_and_name}").text
 			end
-
 		end
+
+		# HELPER METHODs FOR AGE WITH N/A VALUES
+		def set_minvalue_for_age(minval)
+			if minval == "N/A"
+				return "1 Year"
+			else
+				return minval
+			end
+		end 
+
+		def set_maxvalue_for_age(maxval)
+			if maxval == "N/A"
+				return "100 Years"
+			else
+				return maxval
+			end
+		end 
 
 		@trial = Trial.new
 		@trial.title = get_from_xpath("brief_title",root)
@@ -56,10 +74,6 @@ class ImporterController < ApplicationController
 		@trial.inclusion = get_from_xpath("//criteria/textblock",root)
 		@trial.exclusion = get_from_xpath("//criteria/textblock",root)
 		@trial.gender = get_from_xpath("//gender",root)
-
-		#@TODO? Figure out how to treat months. Should it be a seperate column in the db for the actual year value?
-		@trial.minimum_age = get_from_xpath("//minimum_age",root)
-		@trial.maximum_age = get_from_xpath("//maximum_age",root)
 		@trial.healthy_volunteers = get_from_xpath("//healthy_volunteers",root)
 		@trial.overall_contact_name = get_from_xpath("//overall_contact/last_name",root)
 		@trial.overall_contact_phone = get_from_xpath("//overall_contact/phone",root)
@@ -73,24 +87,30 @@ class ImporterController < ApplicationController
 		@trial.keyword = get_from_xpath("keyword",root,true) 
 		@trial.is_fda_regulated = get_from_xpath("is_fda_regulated",root)
 	    @trial.has_expanded_access = get_from_xpath("has_expanded_access",root)
-		
-		doc.xpath("//location",root).each do |site|
-	    	@site = Site.new
-	    	@site.facility = get_from_xpath("facility/name",site)
-	    	@site.city = get_from_xpath("facility/address/city",site)
-	    	@site.state = get_from_xpath("facility/address/state",site)
-	    	@site.zip_code = get_from_xpath("facility/address/zip",site)
-	    	@site.country = get_from_xpath("facility/address/country",site)
-	    	@site.status = get_from_xpath("status",site)
 
-	    	@site.contact_name = get_from_xpath("contact/last_name",site)
-	    	@site.contact_phone = get_from_xpath("contact/phone",site)
-	    	@site.contact_phone_ext = get_from_xpath("contact/phone_ext",site)
-	    	@site.contact_phone_email = get_from_xpath("contact/email",site)
+		# FOR AGE: SEPARATELY STORES IMPORTED VALUE WITH MONTHS VS ALGORITHM VALUEs
+		@trial.originalminage = set_minvalue_for_age(get_from_xpath("//minimum_age",root))
+		@trial.originalmaxage = set_maxvalue_for_age(get_from_xpath("//maximum_age",root))		
+		# @trial.minimum_age = set_minvalue_for_age(get_from_xpath("//minimum_age",root))
+		# @trial.maximum_age = set_maxvalue_for_age(get_from_xpath("//maximum_age",root))
 
-			@trial.sites << @site
-			@site.save
-		end
+		# doc.xpath("//location",root).each do |site|
+	 #    	@site = Site.new
+	 #    	@site.facility = get_from_xpath("facility/name",site)
+	 #    	@site.city = get_from_xpath("facility/address/city",site)
+	 #    	@site.state = get_from_xpath("facility/address/state",site)
+	 #    	@site.zip_code = get_from_xpath("facility/address/zip",site)
+	 #    	@site.country = get_from_xpath("facility/address/country",site)
+	 #    	@site.status = get_from_xpath("status",site)
+
+	 #    	@site.contact_name = get_from_xpath("contact/last_name",site)
+	 #    	@site.contact_phone = get_from_xpath("contact/phone",site)
+	 #    	@site.contact_phone_ext = get_from_xpath("contact/phone_ext",site)
+	 #    	@site.contact_phone_email = get_from_xpath("contact/email",site)
+
+		# 	@trial.sites << @site
+		# 	@site.save
+		# end
 
 
 		@trial.save
@@ -113,7 +133,7 @@ class ImporterController < ApplicationController
   	@sites.each do |site|
   		site.destroy
   	end
-  	redirect_to importer_show_path, notice: "All trials were deleted!"
+  	redirect_to importer_show_path, notice: "All trials and sites were deleted!"
   end
 
   def new_match_alert
@@ -121,9 +141,6 @@ class ImporterController < ApplicationController
   	redirect_to importer_show_path, notice: "Your emails were sent"
   end
 
-		# GET TITLES
-	# titles = parsed_response.search('item title')
-	# tmpTitle = titles.first	
 
 end
 

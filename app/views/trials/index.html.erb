@@ -125,6 +125,12 @@
         <td>
           <%= trial.minimum_age.to_s + " - " + trial.maximum_age.to_s %></td>
       </tr>
+      <!-- @TODO REMOVE THIS -->
+      <tr>
+        <td>AgeReal:</td>
+        <td>
+          <%= trial.originalminage.to_s + " - " + trial.originalmaxage.to_s %></td>
+      </tr>
 
       <!-- @TODO? LETS GET THIS IN THE CONTROLLER -->
       <% unless trial.sites.first.blank? || params[:pc].blank? %>

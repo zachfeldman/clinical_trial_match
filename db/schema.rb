@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131114011805) do
+ActiveRecord::Schema.define(version: 20131130183259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(version: 20131114011805) do
     t.text     "keyword"
     t.text     "is_fda_regulated"
     t.text     "has_expanded_access"
+    t.text     "originalminage"
+    t.text     "originalmaxage"
   end
 
   create_table "users", force: true do |t|
