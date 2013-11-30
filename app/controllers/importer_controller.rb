@@ -2,6 +2,7 @@ class ImporterController < ApplicationController
   # GET /importer
   # GET /importer/show
   def show
+  	@import = Import.last
   end
 
   # POST /importer/run
@@ -20,7 +21,12 @@ class ImporterController < ApplicationController
 	# @TODO rake task route to automate this. every day. import module rake file
 	
 	# OPEN ALL XML FILES AND PARSET THEM INTO THE DATABASE
-	Dir["#{Rails.root}/public/xml_files/*.xml"].each do |file| # .first(10) to limit import
+	
+	trial_counter = 0
+	site_counter = 0
+	Dir["#{Rails.root}/public/xml_files/*.xml"].first(20).each do |file| # .first(10) to limit import
+		trial_counter += 1
+
 		f = File.open(file)
 		doc = Nokogiri::XML(f)
 		root = doc.root
@@ -95,6 +101,7 @@ class ImporterController < ApplicationController
 		# @trial.maximum_age = set_maxvalue_for_age(get_from_xpath("//maximum_age",root))
 
 		# doc.xpath("//location",root).each do |site|
+	     	site_counter += 1
 	 #    	@site = Site.new
 	 #    	@site.facility = get_from_xpath("facility/name",site)
 	 #    	@site.city = get_from_xpath("facility/address/city",site)
@@ -119,7 +126,15 @@ class ImporterController < ApplicationController
 	    
 
 	  end
-	redirect_to root_path, notice: "All trials were successfully imported!"	 
+
+	# TIMESTAMP THE IMPORT RUN
+	@import = Import.new
+	@import.datetime = Time.new
+	@import.valid_trials = trial_counter
+	@import.valid_sites = site_counter
+	@import.save
+
+	redirect_to importer_show_path, notice: "All trials were successfully imported!"	 
 
   end
 

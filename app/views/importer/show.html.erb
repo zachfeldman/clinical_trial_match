@@ -1,5 +1,7 @@
 <h1>Import Trials from ClinicalTrials.gov</h1>
-<p>The last import was run on <span style="font-weight:bold;">October 10, 2013 at 8:55pm</span></p>
+<p style="font-size:1.2em;">The importer was last run at <span style="font-weight:bold;"><%= @import.datetime.strftime("%m/%d/%Y %H:%M")%></span>&nbsp;<span style="font-style:italic; font-size:0.6em; color:#333;"><%= time_ago_in_words(@import.datetime)%> ago</span></p>
+<p><%= "#{pluralize(@import.valid_trials, "trial")} and #{pluralize(@import.valid_sites,"sites")} were added and/or updated in the last import run." %></p>
+<br>
 
 <%= link_to "Run Importer", importer_run_path, method: :post %><br>
 
