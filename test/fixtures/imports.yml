@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  datetime: 2013-11-30 17:28:19
+  valid_trials: 1
+  valid_sites: 1
+
+two:
+  datetime: 2013-11-30 17:28:19
+  valid_trials: 1
+  valid_sites: 1
