@@ -26,7 +26,7 @@ What are you waiting for?</p>
   <%= radio_button_tag(:vt, "patient", (session[:vt] == "patient" ? true : false)) %>
 
   <!--  @TODO? Need to put in global variable for disease -->
-  <%= label_tag(:vt_patient, "I have a brain tumor") %>
+  <%= label_tag(:vt_patient, ClinicalTrialMatcher::Application.config.filter_label) %>
   <div class="clear"></div>
   <%= radio_button_tag(:vt, "control", (session[:vt] == "control" ? true : false)) %>
   <%= label_tag(:vt_control, "I am a control") %>

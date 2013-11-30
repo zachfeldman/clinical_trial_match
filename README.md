@@ -25,7 +25,6 @@ Feel free to contact me offline at mwenger at michaeljfox.org
 User Stories/Features Still Open
 -----------
 
-* CONFIG: Set up configuration so that disease condition and form inputs can flexibly be changed for future instances of the site CONDITION_TYPE = intializers/condition_type.rb   
 * IMPORTER: Make sure months and years are parsed correctly
 * IMPORTER: Parse inclusion exclusion criteria
 * IMPORTER: Only run for modified/new trials

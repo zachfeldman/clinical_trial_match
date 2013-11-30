@@ -8,10 +8,11 @@ class ImporterController < ApplicationController
   def run
   	require 'nokogiri'
 	require 'rest-client'
+	require 'uri'	  	
 	
-	# @TODO pull out condition into global config
-	# @TODO? figure out how to do this off the internet and not out of the assets/xml_files folder
-	# starting_url = "http://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=study&recr=Open&no_unk=Y&cond=brain%20tumor&show_down=Y"
+  	encoded_condition = URI.encode(ClinicalTrialMatcher::Application.config.importer_query)
+  	remove_unknown = ClinicalTrialMatcher::Application.config.remove_unknown
+	starting_url = "http://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=study&recr=Open&no_unk=#{remove_unknown}&cond=#{encoded_condition}&show_down=Y"
 	# response = RestClient.get(starting_url)
 	# parsed_response = Nokogiri::XML(response)
 
