@@ -13,7 +13,7 @@ For the Parkinson's disease community, the Michael J. Fox Foundation has develop
 
 Other disease foundations can also benefit from a tool to better promote clinical trial participation opportuities amongst their community. The goal of this open source project goal is to create a streamlined version of FTF that can be deployed to multiple foundations without large setup and maintenance overhead.
 
-<a href="http://shrouded-river-3637.herokuapp.com/" target="_blank">Access the Beta Site</a>
+<a href="http://shrouded-river-3637.herokuapp.com/" target="_blank">Access Beta Site</a>
 -----------
 
 How to Get Involved
@@ -22,7 +22,7 @@ Pull requests are welcome!
 Feel free to contact me offline at mwenger at michaeljfox.org
 
 
-User Stories/Features To Still Implement
+User Stories/Features Still Open
 -----------
 
 * CONFIG: Set up configuration so that disease condition and form inputs can flexibly be changed for future instances of the site CONDITION_TYPE = intializers/condition_type.rb   
