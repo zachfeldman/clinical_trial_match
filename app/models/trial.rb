@@ -17,8 +17,8 @@ class Trial < ActiveRecord::Base
 		end 
 	}
 	scope :search_for, -> (query) {
-		#where('title ILIKE :query OR description ILIKE :query', query: "%#{query}%")
-		where('originalminage ILIKE :query OR originalmaxage ILIKE :query', query: "%#{query}%")
+		where('title ILIKE :query OR description ILIKE :query', query: "%#{query}%")
+		#where('originalminage ILIKE :query OR originalmaxage ILIKE :query', query: "%#{query}%")
 	}
 
 
@@ -88,8 +88,16 @@ class Trial < ActiveRecord::Base
 private
 
 	def enumerate_age_value
-		self.minimum_age = self.originalminage
-		self.maximum_age = self.originalmaxage
+		self.minimum_age = convert_months_to_years(self.originalminage)
+		self.maximum_age = convert_months_to_years(self.originalmaxage)
+	end
+
+	def convert_months_to_years(age)
+		if age.downcase.include? "month"
+			(age.to_f/12).floor()
+		else
+			age
+		end
 	end
 
 	def self.close_to_logic(coordinates, td)
