@@ -52,17 +52,18 @@ class ImporterController < ApplicationController
 			end
 		end 
 
-	Dir["#{Rails.root}/public/xml_files/*.xml"].each do |file| # .first(10) to limit import
+	Dir["#{Rails.root}/public/xml_files/*.xml"].first(10).each do |file| # .first(10) to limit import
 		f = File.open(file)
 		doc = Nokogiri::XML(f)
 		root = doc.root
 		last_import_date = Import.last.datetime
+		temp_nct_id = get_from_xpath("//nct_id",root)
 
 		# SEE IF TRIAL HAS BEEN UPDATED SINCE LAST IMPORT
 		if get_from_xpath("lastchanged_date",root) < last_import_date
 			f.close
 		else
-			@trial = Trial.new
+			@trial = Trial.where("nct_id = ?", temp_nct_id).present? ? Trial.where("nct_id = ?", temp_nct_id).first : Trial.new
 			@trial.title = get_from_xpath("brief_title",root)
 			@trial.description = get_from_xpath("brief_summary/textblock",root)
 			@trial.detailed_description = get_from_xpath("detailed_description/textblock",root)
