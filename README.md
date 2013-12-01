@@ -25,9 +25,7 @@ Feel free to contact me offline at mwenger at michaeljfox.org
 User Stories/Features Still Open
 -----------
 
-* IMPORTER: Make sure months and years are parsed correctly. See Evaluation, Treatment, and Natural History of Children With Cancer
 * IMPORTER: Parse inclusion exclusion criteria
-* IMPORTER: Only run for modified/new trials
 * IMPORTER: Open Zip files and run nightly (http://rubyzip.sourceforge.net/classes/Zip/ZipFileSystem.html). Track run times
 * REGISTRATION: Complete registration process and list of matches
 * REGISTRATION: Finalize email confirmation process
