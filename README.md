@@ -30,6 +30,8 @@ User Stories/Features Still Open
 * REGISTRATION: Complete user registration process with personal matches dashboard
 * REGISTRATION: Finalize registration email confirmation process
 * EMAIL: Setup new match email alerts for registered users
+* (TO DISCUSS) Clinical trials.gov accrediation and update dates: http://clinicaltrials.gov/ct2/about-site/terms-conditions
+
 
 Phase II Items
 -----------
