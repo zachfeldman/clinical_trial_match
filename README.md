@@ -25,11 +25,11 @@ Feel free to contact me offline at mwenger at michaeljfox.org
 User Stories/Features Still Open
 -----------
 
-* IMPORTER: Parse inclusion exclusion criteria
-* IMPORTER: Open Zip files and run nightly (http://rubyzip.sourceforge.net/classes/Zip/ZipFileSystem.html). Track run times
-* REGISTRATION: Complete registration process and list of matches
-* REGISTRATION: Finalize email confirmation process
-* EMAIL: Nightly email service hooked into importer
+* IMPORTER: Automatically parse inclusion exclusion & criteria into separate fields (alternatively - use client side logic to segment)
+* IMPORTER: Open zip folders and run nightly (http://rubyzip.sourceforge.net/classes/Zip/ZipFileSystem.html). Log run times and imports to send to email config
+* REGISTRATION: Complete user registration process with personal matches dashboard
+* REGISTRATION: Finalize registration email confirmation process
+* EMAIL: Setup new match email alerts for registered users
 
 Phase II Items
 -----------
