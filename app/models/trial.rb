@@ -108,6 +108,7 @@ private
 			valid_trials << site.trial_id
 			
 		end
-		valid_trials #[2,3,4,5,6,8]				
+		valid_trials.uniq
+		 #[2,3,4,5,6,8]				
 	end
 end
