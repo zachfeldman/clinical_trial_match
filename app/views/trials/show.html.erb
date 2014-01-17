@@ -143,7 +143,11 @@
                     <table class="siteLocationTable">
                         <tr>
                             <th class="first"><span></span>
-                            <%= "#{site.city}, #{site.state} - (#{site.distance_from(session[:coordinates]).round()} miles away)" %></th>
+                            <%= "#{site.city}, #{site.state}"%>
+                            <% unless session[:coordinates].blank? %>
+                                <%=" - (#{site.distance_from(session[:coordinates]).round()} miles away)" %>
+                            <% end %>
+                            </th>
                         <th>
                             Status:
                             <%=  "#{site.status}" %></th>
