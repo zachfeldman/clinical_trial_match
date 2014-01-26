@@ -6,13 +6,9 @@ class TrialsController < ApplicationController
     @focuses = Focus.all
 
     unless params[:pc].blank?
-      
-      # Maplewood [40.73,-74.27]
-      # California [34.05,118.25]
-      coordinates =  [34.05,-118.25]#Geocoder.coordinates("#{coordinates}, United States")
-      @coordinates = [34.05,-118.25]
-      session[:coordinates] = coordinates
-        if coordinates.blank? || coordinates == [39.49593, -98.990005]      
+        coordinates =  Geocoder.coordinates("#{params[:pc]}, United States")
+        session[:coordinates] = coordinates
+        if coordinates.blank? || coordinates == [39.49593, -98.990005] # The equivalent of the center of the US.   
           raise
         end
     end
