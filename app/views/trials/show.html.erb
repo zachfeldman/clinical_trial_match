@@ -4,7 +4,7 @@
 <div id="td_contents">        
         <h2 class="colorOrange"><%= @trial.title %></h2>
         <h3 class="briefAbstract"><%= @trial.official_title %></h3>
-        <div class="td_purpose greyBackground mt20">
+        <div class="greyBackground mt20">
             <h4 class="detailDesc">
                 Study Purpose:</h4>
             <p><%= @trial.description %></p>
@@ -122,7 +122,7 @@
                 More Inclusion &amp; Exclusion Criteria<span class="expandIcon">▼</span>
         </div>
         <div class="td_purpose whitesmokeBorder" id="exclusionCriteria" style="display: none;">
-            <div class="mt10 mb10" style="padding-bottom:1em; border-bottom: 2px solid whitesmoke;"><%= raw(@trial.output_criteria) %>
+            <div class="mt10 mb10" ><%= raw(@trial.output_criteria) %>
             </div>
             
             </div>

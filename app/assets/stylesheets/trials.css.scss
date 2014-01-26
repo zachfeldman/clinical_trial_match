@@ -20,7 +20,6 @@ td{
 	font-size: 14px;
 	margin-top: 2px;
 	cursor:pointer;
-	margin-bottom:4px;
 }
 
 .expandableTrialDetails:hover {background-color:#999; color:white;}
@@ -82,4 +81,12 @@ li{
 
 #exclusionCriteria h4{
 	text-transform: uppercase;
+}
+
+.whitesmokeBorder {
+	border: 2px solid #F5F5F5;
+}
+.td_purpose{
+	padding: 10px 30px;
+	color: #666;
 }
