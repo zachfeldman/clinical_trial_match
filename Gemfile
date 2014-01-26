@@ -66,22 +66,15 @@ end
 group :production do
 	gem 'rails_12factor'
   gem 'unicorn'
-  gem 'pg'
 end
 
 
 group :development do
-  # Use Guard + Addons for automated test runs
-  gem 'guard'
-  gem 'guard-rspec'
   gem 'jazz_hands'
 
   # Works for rails console
   gem 'meta_request'
 
-	# better error pages in dev
-	gem 'better_errors'
-	gem 'binding_of_caller'
 end
 
 group :doc do
