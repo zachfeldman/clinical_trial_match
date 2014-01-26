@@ -25,6 +25,8 @@ Feel free to contact me offline at mwenger at michaeljfox.org
 User Stories/Features Still Open
 -----------
 
+* Add proximity sort to browse trials page
+* Add previous or next buttons on trial details page
 * IMPORTER: Automatically parse inclusion exclusion & criteria into separate fields (alternatively - use client side logic to segment)
 * IMPORTER: Open zip folders and run nightly (http://rubyzip.sourceforge.net/classes/Zip/ZipFileSystem.html). Log run times and imports to send to email config
 * REGISTRATION: Complete user registration process with personal matches dashboard
