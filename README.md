@@ -26,6 +26,7 @@ User Stories/Features Still Open
 -----------
 
 * Save search results so that someone can click to next and previous result
+* Cache lat long for zip code queries (save on google api hits)
 * Add proximity sort to browse trials page
 * Add previous or next buttons on trial details page
 * IMPORTER: Automatically parse inclusion exclusion & criteria into separate fields (alternatively - use client side logic to segment)
