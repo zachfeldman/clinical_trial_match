@@ -45,7 +45,8 @@ gem 'will_paginate'
 # For Country Dropdown
 gem 'carmen'
 
-
+# Tool to open zip files
+gem "zipruby"
 
 group :development, :test do
 	gem 'dotenv-rails'
