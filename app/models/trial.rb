@@ -83,9 +83,13 @@ class Trial < ActiveRecord::Base
 
 	has_many :sites
 
-
+	def output_criteria
+		inclusion.gsub(/(^|\n\n)(\s)*(-)?(.*)(Exclusion|Inclusion) Criteria(.*)\n\n/i,'<h4>\4\5 Criteria\6</h4>').gsub("\n\n","<br>")
+	end
 
 private
+
+
 
 	def enumerate_age_value
 		self.minimum_age = convert_months_to_years(self.originalminage)

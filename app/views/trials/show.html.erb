@@ -122,9 +122,7 @@
                 More Inclusion &amp; Exclusion Criteria<span class="expandIcon">▼</span>
         </div>
         <div class="td_purpose whitesmokeBorder" id="exclusionCriteria" style="display: none;">
-            <h4>
-                Inclusion Criteria</h4>
-            <div class="mt10 mb10" style="padding-bottom:1em; border-bottom: 2px solid whitesmoke;"><%= @trial.inclusion %>
+            <div class="mt10 mb10" style="padding-bottom:1em; border-bottom: 2px solid whitesmoke;"><%= raw(@trial.output_criteria) %>
             </div>
             
             </div>
