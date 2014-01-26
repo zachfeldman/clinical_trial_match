@@ -25,6 +25,7 @@ Feel free to contact me offline at mwenger at michaeljfox.org
 User Stories/Features Still Open
 -----------
 
+* Save search results so that someone can click to next and previous result
 * Add proximity sort to browse trials page
 * Add previous or next buttons on trial details page
 * IMPORTER: Automatically parse inclusion exclusion & criteria into separate fields (alternatively - use client side logic to segment)
