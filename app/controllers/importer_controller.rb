@@ -143,15 +143,18 @@ class ImporterController < ApplicationController
 
 
   def delete_all
-  	@trial = Trial.all
-  	@trial.each do |trial|
-  		trial.destroy
-  	end
-  	@sites = Site.all
-  	@sites.each do |site|
-  		site.destroy
-  	end
+  	@trial = Trial.delete_all
+  	@sites = Site.delete_all
   	redirect_to importer_show_path, notice: "All trials and sites were deleted!"
+  end
+
+  def clear_date
+  	@import = Import.new
+  	@import.datetime = "Mon, 1 Jan 1900 00:00:04 UTC +00:00"
+	@import.valid_trials = 0
+	@import.valid_sites = 0
+  	@import.save
+  	redirect_to importer_show_path, notice: "The last import date was reset."
   end
 
   def new_match_alert
