@@ -87,6 +87,11 @@ class Trial < ActiveRecord::Base
 		inclusion.gsub(/(^|\n\n)(\s)*(-)?(.*)(Exclusion|Inclusion) Criteria(.*)\n\n/i,'<h4>\4\5 Criteria\6</h4>').gsub("\n\n","<br>")
 	end
 
+	def output_description
+		detailed_description.gsub("\n\n","<br><br>")
+	end
+
+
 private
 
 
