@@ -55,7 +55,7 @@ class ImporterController < ApplicationController
 
 	Zip::Archive.open("#{Rails.root}/tmp/ct_download.zip") do |ar|
 	  n = ar.num_files # number of entries
-	  n.times do |i| # 5.times replace digit with number
+	  3.times do |i| # 5.times replace digit with number
 	    entry_name = ar.get_name(i) # get entry name from archive
 	    f = ar.fopen(entry_name)
 	    doc = Nokogiri::XML(f)
