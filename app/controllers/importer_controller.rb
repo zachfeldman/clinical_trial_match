@@ -44,17 +44,16 @@ class ImporterController < ApplicationController
 	end 
 
 	
- #  	encoded_condition = URI.encode(ClinicalTrialMatcher::Application.config.importer_query)
- #  	remove_unknown = ClinicalTrialMatcher::Application.config.remove_unknown
-	# starting_url = "http://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=study&recr=Open&no_unk=#{remove_unknown}&cond=#{encoded_condition}&show_down=Y"
-	# response = RestClient.get(starting_url)
-	# parsed_response = Nokogiri::XML(response)
+  	encoded_condition = URI.encode(ClinicalTrialMatcher::Application.config.importer_query)
+  	remove_unknown = ClinicalTrialMatcher::Application.config.remove_unknown
+	starting_url = "http://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=study&recr=Open&no_unk=#{remove_unknown}&cond=#{encoded_condition}&show_down=Y"
+	`wget "#{starting_url}" -O "#{Rails.root}/tmp/ct_download.zip" `
 
 	trial_counter = 0
 	site_counter = 0
 	last_import_date = Import.last.datetime
 
-	Zip::Archive.open("#{Rails.root}/tmp/original_zip.zip") do |ar|
+	Zip::Archive.open("#{Rails.root}/tmp/ct_download.zip") do |ar|
 	  n = ar.num_files # number of entries
 	  n.times do |i| # 5.times replace digit with number
 	    entry_name = ar.get_name(i) # get entry name from archive
