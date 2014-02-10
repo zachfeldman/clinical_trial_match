@@ -4,12 +4,12 @@
 
   <div class="clear"></div>
   <hr>
-<!--   <%= label_tag(:pc, "Zip Code:", :class => "inlineFormLabel") %>
+  <%= label_tag(:pc, "Zip Code:", :class => "inlineFormLabel") %>
   <%= text_field_tag(:pc, params[:pc], :class => "inlineFormField") %>
   <%= select_tag(:td,
   options_for_select([['Will travel 25 miles', 25], ['Will travel 50 miles', 50], ['Will travel 100 miles', 100], ['Will travel 300 miles', 300]], params[:td]||100 )) %>
   <div class="clear"></div>
-  <hr> -->
+  <hr>
   <%= radio_button_tag(:vt, "patient", (params[:vt] == "patient" ? true : false)) %>
 
   <!--  @TODO? Need to put in global variable for disease -->
