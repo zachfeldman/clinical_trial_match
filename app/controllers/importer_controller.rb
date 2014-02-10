@@ -47,13 +47,14 @@ class ImporterController < ApplicationController
   	encoded_condition = URI.encode(ClinicalTrialMatcher::Application.config.importer_query)
   	remove_unknown = ClinicalTrialMatcher::Application.config.remove_unknown
 	starting_url = "http://clinicaltrials.gov/ct2/results/download?down_stds=all&down_typ=study&recr=Open&no_unk=#{remove_unknown}&cond=#{encoded_condition}&show_down=Y"
-	`curl "#{starting_url}" > "#{Rails.root}/tmp/ct_download.zip"`
+	`curl "#{starting_url}" > "#{Rails.root}/tmp/trial_download.zip"`
 
 	trial_counter = 0
 	site_counter = 0
-	last_import_date = Import.last.datetime
 
-	Zip::Archive.open("#{Rails.root}/tmp/ct_download.zip") do |ar|
+	last_import_date = Import.last.datetime unless Import.last.nil?
+
+	Zip::Archive.open("#{Rails.root}/tmp/trial_download.zip") do |ar|
 	  n = ar.num_files # number of entries
 	  n.times do |i| # 5.times replace digit with number
 	    entry_name = ar.get_name(i) # get entry name from archive
@@ -62,7 +63,7 @@ class ImporterController < ApplicationController
 	    root = doc.root
 		temp_nct_id = get_from_xpath("//nct_id",root)
 
-		if get_from_xpath("lastchanged_date",root) < last_import_date
+		if last_import_date.present? && (get_from_xpath("lastchanged_date",root) < last_import_date)
 	 		f.close
 	 	else
 			@trial = Trial.where("nct_id = ?", temp_nct_id).present? ? Trial.where("nct_id = ?", temp_nct_id).first : Trial.new
