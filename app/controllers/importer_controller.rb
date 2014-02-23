@@ -161,7 +161,8 @@ class ImporterController < ApplicationController
   end
 
   def new_match_alert
-  	UserMailer.new_match_alert.deliver
+  	#UserMailer.new_match_alert.deliver
+	Newmatch.new_match_report.deliver
   	redirect_to importer_show_path, notice: "Your emails were sent"
   end
 
