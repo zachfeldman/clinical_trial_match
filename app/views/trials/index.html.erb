@@ -47,7 +47,7 @@
     <%=@trials.total_entries %>
     <%= @trials.total_entries.to_i >
     1 ? "trials" : "trial" %> by
-    <%= select_tag(:ot, options_for_select([['ABC', 'title ASC'], ['Last Updated', 'lastchanged_date DESC']], params[:ot]||'abc' ), :onchange =>("$('#ot').submit()")) %></p>
+    <%= select_tag(:ot, options_for_select([['A-Z', 'title ASC'], ['Last Updated', 'lastchanged_date DESC']], params[:ot]||'abc' ), :onchange =>("$('#ot').submit()")) %></p>
 
 
   <% end %>
