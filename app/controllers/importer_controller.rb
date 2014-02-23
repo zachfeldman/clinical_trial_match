@@ -3,6 +3,8 @@ class ImporterController < ApplicationController
   # GET /importer/show
   def show
   	@import = Import.last
+  	@trials = Trial.all
+  	@sites = Site.all
   end
 
   # POST /importer/run
