@@ -17,7 +17,6 @@ class TrialsController < ApplicationController
 
     # eric's refactoring recommendation -    @sites = Site.near(params[:pc],params[:td]).where(trials_ids: @trial_ids).paginate(:page => params[:page], :per_page => 10)
     session[:search_results] = request.url
-    raise
     session[:age] = params[:age]
     session[:vt] = params[:vt]
     session[:gender] = params[:gender]
