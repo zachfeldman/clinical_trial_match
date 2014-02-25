@@ -4,10 +4,18 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
+
+<% unless @import.blank? %>
     <h1>The importer successfully ran.</h1>
 
+	<p style="font-size:1.2em;">The importer ran at <span style="font-weight:bold;"><%= @import.datetime.strftime("%m/%d/%Y %H:%M")%></span>&nbsp;<span style="font-style:italic; font-size:0.6em; color:#333;"><%= time_ago_in_words(@import.datetime)%> ago</span></p>
+	
+	<p><%= "#{pluralize(@import.valid_trials, "trial")} and #{pluralize(@import.valid_sites,"sites")} were added and/or updated in the last import run." %></p>
+<% end %>
 
-    <%= "<p>There are #{@trials.all.count} trials and #{@sites.all.count} in the database.</p>" %>
+    <p><%= "There are currently #{@trials.all.count} trials and #{@sites.all.count} in the database." %></p>
+
+    <p><%= "There are #{@sites.geocoded.count} geocoded sites but #{@sites.not_geocoded.count} are not geocoded."  %></p>
     
   </body>
 </html>
