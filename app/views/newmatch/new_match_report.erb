@@ -13,9 +13,11 @@
 	<p><%= "#{pluralize(@import.valid_trials, "trial")} and #{pluralize(@import.valid_sites,"sites")} were added and/or updated in the last import run." %></p>
 <% end %>
 
-    <p><%= "There are currently #{@trials.all.count} trials and #{@sites.all.count} in the database." %></p>
+    <p><%= "There are currently #{@trials.all.count} trials and #{@sites.all.count} sites in the database." %></p>
 
-    <p><%= "There are #{@sites.geocoded.count} geocoded sites but #{@sites.not_geocoded.count} are not geocoded."  %></p>
+    <p><%= "Of those site, #{@sites.geocoded.count} are geocoded and #{@sites.not_geocoded.count} do not have latitude and longitude."  %></p>
     
+
+
   </body>
 </html>
