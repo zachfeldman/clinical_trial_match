@@ -6,6 +6,6 @@ class Newmatch < ActionMailer::Base
     @trials = Trial.all
     @sites = Site.all
     mail( :to => ClinicalTrialMatcher::Application.config.import_report_recipient,
-    :subject => 'New Match Report' )
+    :subject => 'Clinial Trial Import Report: ' + Time.new.strftime("%m/%d/%Y") )
   end
 end
