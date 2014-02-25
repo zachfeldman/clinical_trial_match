@@ -140,6 +140,7 @@ class ImporterController < ApplicationController
 	@import.valid_sites = site_counter
 	@import.save
 
+	Newmatch.new_match_report.deliver
 	redirect_to importer_show_path, notice: "All trials were successfully imported!"	 
 
   end
