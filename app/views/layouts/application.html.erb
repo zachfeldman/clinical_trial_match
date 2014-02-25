@@ -25,16 +25,15 @@
 <script type='text/javascript' src='http://celiac.org/wp-content/plugins/cdf-provider-directory/js/jquery.placeholder.js?ver=3.7.1'></script>
 <script type='text/javascript' src='http://celiac.org/wp-content/themes/celiac/includes/page-menu-widget/page-menu-widget.js?ver=3.7.1'></script>
 <script type='text/javascript' src='http://celiac.org/wp-content/themes/celiac/includes/js/third-party.js?ver=3.7.1'></script>
-<script type='text/javascript' src='http://celiac.org/wp-content/themes/celiac/includes/js/general.js?ver=3.7.1'></script>
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://celiac.org/xmlrpc.php?rsd" />
+<!-- <script type='text/javascript' src='http://celiac.org/wp-content/themes/celiac/includes/js/general.js?ver=3.7.1'></script>
+ -->
+ <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://celiac.org/xmlrpc.php?rsd" />
 <link rel='prev' title='Volunteer' href='http://cdf.thankyou4caring.org/page.aspx?pid=344' />
 <link rel='next' title='Gluten-Free Marketplace' href='http://celiac.org/live-gluten-free/gluten-free-marketplace/' />
 <link rel='canonical' href='http://celiac.org/get-involved/clinical-trials/' />
 <link rel='shortlink' href='http://wp.me/P41qfM-PT' />
 
-<!-- This site is using AdRotate v3.8.11 to display their advertisements - http://www.adrotateplugin.com/ -->
-<!-- <meta name="vfbPro" version="2.4.1" /> -->
-<style type='text/css'>img#wpstats{display:none}</style>
+
 <!-- Jetpack Open Graph Tags -->
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Clinical Trials" />
@@ -88,7 +87,65 @@
     <link rel="apple-touch-icon" sizes="144x144" href="http://celiac.org/wp-content/themes/celiac/images/favicon/apple-touch-icon-152x152.png" />
 
 	  <%= stylesheet_link_tag :application %>
-	<%= javascript_include_tag "application" %>
+
+
+<script>
+var ready;
+ready = function() {
+
+  jQuery('#expandFullLink').on("click",function () {
+        console.log('test1');
+        jQuery('#expandFullDescription').slideToggle();
+        var arrowPosition = jQuery("#expandFullLink .expandIcon").html();
+        if (arrowPosition == "▼") {
+            console.log('test2');
+            jQuery("#expandFullLink .expandIcon").html("&#9650;");
+        } else {
+            console.log('test3');
+            jQuery("#expandFullLink .expandIcon").html("▼");
+        }
+    });
+
+    jQuery('#expandExclusion').on("click",function () {
+        jQuery('#exclusionCriteria').slideToggle();
+        var arrowPosition = jQuery("#expandExclusion .expandIcon").html();
+        if (arrowPosition == "▼") {
+            jQuery("#expandExclusion .expandIcon").html("&#9650;");
+        } else {
+            jQuery("#expandExclusion .expandIcon").html("▼");
+        }
+    });
+
+    jQuery(".close").on("click",function(){
+        jQuery(this).parent().fadeOut();
+        jQuery.cookie('signup_div_viewed', true);
+    });
+
+    jQuery('#choose_focus').click(function(e) {
+        console.log('this worked');
+        var url = jQuery(this).attr('href');
+        console.log(url);
+        var dialog_form = jQuery('<div id="dialog-form">Loading form...</div>').dialog({
+            autoOpen: false,
+            width: 520,
+            modal: true,
+            open: function() {
+                return jQuery(this).load(url + ' #content');
+                
+            },
+            close: function() {
+                jQuery('#dialog-form').remove();
+            }
+        });
+        dialog_form.dialog('open');
+        e.preventDefault();
+    });
+
+};
+
+jQuery(document).ready(ready);
+jQuery(document).on('page:load', ready);
+</script>
   	  <%= csrf_meta_tag %>
 
 </head>
@@ -292,9 +349,9 @@
 </select>
 		</form>
 		<script>
-		jQuery( document ).ready(function( $ ){
-			$('.mobile-menu select').change(function() {
-				if ( $(this).val() ) window.location.href = $(this).val();
+		jQuery( document ).ready(function( jQuery ){
+			jQuery('.mobile-menu select').change(function() {
+				if ( jQuery(this).val() ) window.location.href = jQuery(this).val();
 			});
 		});
 		</script>
