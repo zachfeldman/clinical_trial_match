@@ -3,6 +3,8 @@ class Newmatch < ActionMailer::Base
 
   # send a signup email to the user, pass in the user object that   contains the user's email address
   def new_match_report
+    @trials = Trial.all
+    @sites = Site.all
     mail( :to => ClinicalTrialMatcher::Application.config.import_report_recipient,
     :subject => 'New Match Report' )
   end

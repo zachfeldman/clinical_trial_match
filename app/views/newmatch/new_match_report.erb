@@ -4,7 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Here is the report of trials.</h1>
-    <p>3000 trials imported. NOTE: This is temp data.</p>
+    <h1>The importer successfully ran.</h1>
+
+
+    <%= "<p>There are #{@trials.all.count} trials and #{@sites.all.count} in the database.</p>" %>
+    
   </body>
 </html>
