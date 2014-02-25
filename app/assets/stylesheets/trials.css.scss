@@ -9,6 +9,16 @@
 	margin-top:1em;
 }
 
+.search_bar select{
+	display: block;
+	float: none;
+	margin-bottom: 3em;
+}
+
+.genderContainer{
+	margin-bottom: 2em;
+}
+
 td{
 	overflow: hidden;
 	text-overflow: ellipsis;
