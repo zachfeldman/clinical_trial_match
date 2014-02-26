@@ -1,12 +1,11 @@
 <h1>Import Trials from ClinicalTrials.gov</h1>
 
+
 <% unless @import.blank? %>
 	<p style="font-size:1.2em;">The importer was last run at <span style="font-weight:bold;"><%= @import.datetime.strftime("%m/%d/%Y %H:%M")%></span>&nbsp;<span style="font-style:italic; font-size:0.6em; color:#333;"><%= time_ago_in_words(@import.datetime)%> ago</span></p>
 	<p><%= "#{pluralize(@import.valid_trials, "trial")} and #{pluralize(@import.valid_sites,"sites")} were added and/or updated in the last import run." %></p>
 <% end %>
-
 <br>
-
 <%= link_to "Run Importer", importer_run_path, method: :post %><br>
 <br>
 <%= link_to "Clear Last Import Date", importer_clear_date_path, method: :post %><br>
@@ -14,6 +13,20 @@
 <%= link_to "Delete All Trials", importer_delete_all_path, method: :post %><br>
 <br>
 <%= link_to "View All Trials", root_path %><br>
+
+<br>
+<hr>
+<p><%= "There are #{@trials.all.count} trials with #{@sites.all.count} site locations."  %></p>
+<p><%= "There are #{@sites.geocoded.count} geocoded sites but #{@sites.not_geocoded.count} are not geocoded."  %></p>
+<hr>
+<h3>Sites Not Geocoded</h3>
+<% @sites.not_geocoded.each do |site| %>
+	<%= link_to truncate(site.trial.title, :length => 50), site.trial %>
+	<%= "(#{site.facility})" %>
+	<br>
+<% end %>
+<br>
+
 <!-- 
 <%= link_to "Send new match emails", importer_new_match_alert_path %>
  -->

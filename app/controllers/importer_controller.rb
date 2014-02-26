@@ -3,6 +3,8 @@ class ImporterController < ApplicationController
   # GET /importer/show
   def show
   	@import = Import.last
+  	@trials = Trial.all
+  	@sites = Site.all
   end
 
   # POST /importer/run
@@ -138,6 +140,7 @@ class ImporterController < ApplicationController
 	@import.valid_sites = site_counter
 	@import.save
 
+	Newmatch.new_match_report.deliver
 	redirect_to importer_show_path, notice: "All trials were successfully imported!"	 
 
   end
@@ -159,7 +162,8 @@ class ImporterController < ApplicationController
   end
 
   def new_match_alert
-  	UserMailer.new_match_alert.deliver
+  	#UserMailer.new_match_alert.deliver
+	Newmatch.new_match_report.deliver
   	redirect_to importer_show_path, notice: "Your emails were sent"
   end
 
