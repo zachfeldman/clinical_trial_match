@@ -13,9 +13,10 @@ class TrialsController < ApplicationController
         end
     end
 
-    @trials = Trial.search_for(params[:q]).age(params[:age]).control?(params[:vt]).gender(params[:gender]).type(params[:ty]).phase(params[:ph]).fda(params[:fda]).focus(params[:focus]).close_to(coordinates, params[:td]).order(params[:ot]||"title ASC").paginate(:page => params[:page], :per_page => 10)
+    @trials = Trial.search_for(params[:q]).age(params[:age]).control?(params[:vt]).gender(params[:gender]).type(params[:ty]).phase(params[:ph]).fda(params[:fda]).focus(params[:focus]).close_to(coordinates, params[:td]).order(params[:ot]||"lastchanged_date DESC").paginate(:page => params[:page], :per_page => 10)
 
     # eric's refactoring recommendation -    @sites = Site.near(params[:pc],params[:td]).where(trials_ids: @trial_ids).paginate(:page => params[:page], :per_page => 10)
+    session[:search_results] = request.url
     session[:age] = params[:age]
     session[:vt] = params[:vt]
     session[:gender] = params[:gender]
