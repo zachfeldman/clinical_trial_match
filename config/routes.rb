@@ -1,5 +1,6 @@
 ClinicalTrialMatcher::Application.routes.draw do
 
+  get "homepage/index"
   get "focuses/show"
   get "/omniauth_callbacks/twitter"
   get "/importer/show"
@@ -24,6 +25,7 @@ ClinicalTrialMatcher::Application.routes.draw do
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   resources :trials
   resources :sites
+
   root 'trials#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
