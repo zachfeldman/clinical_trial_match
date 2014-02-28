@@ -4,6 +4,8 @@ ClinicalTrialMatcher::Application.routes.draw do
 
   get "/omniauth_callbacks/twitter"
   get "/importer" => 'importer#show'
+  get "/importer/show" => 'importer#show'
+
 
   post "/importer/run"
   get "/importer/run"
