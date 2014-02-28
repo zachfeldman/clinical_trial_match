@@ -19,10 +19,10 @@ ClinicalTrialMatcher::Application.routes.draw do
 
   get "/user_mailer/new_match_alert"
   post "/user_mailer/new_match_alert"
-
+ 
+  get "trials/:id" => "trials#show", as: :trial
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  resources :trials
   resources :sites
   
   # The priority is based upon order of creation: first created -> highest priority.
@@ -35,7 +35,7 @@ ClinicalTrialMatcher::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #  get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
