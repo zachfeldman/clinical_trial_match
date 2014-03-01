@@ -21,7 +21,8 @@ ClinicalTrialMatcher::Application.routes.draw do
 
   get "/user_mailer/new_match_alert"
   post "/user_mailer/new_match_alert"
- 
+
+  get "trials/" => "trials#index", as: :trials 
   get "trials/:id" => "trials#show", as: :trial
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
