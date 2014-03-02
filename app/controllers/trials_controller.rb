@@ -7,6 +7,7 @@ class TrialsController < ApplicationController
 
     unless params[:pc].blank?
         session[:coordinates] =  Geocoder.coordinates("#{params[:pc]}, United States")
+        # session[:coordinates] = [40.7142700 , -74.0059700]
         if session[:coordinates].nil?
           flash.now[:alert] = "We are unable to detect a zip code for your location at this time."
           AdminAlerts.no_lat_long(params[:pc]).deliver       
