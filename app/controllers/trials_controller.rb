@@ -6,8 +6,7 @@ class TrialsController < ApplicationController
     @focuses = Focus.all
 
     unless params[:pc].blank?
-        coordinates =  Geocoder.coordinates("#{params[:pc]}, United States")
-        session[:coordinates] = coordinates
+        session[:coordinates] =  Geocoder.coordinates("#{params[:pc]}, United States")
         if coordinates.blank? || coordinates == [39.49593, -98.990005] # The equivalent of the center of the US.   
           coordinates = [40.7142700 , -74.0059700] # just putting in a fake value for now @TODO
         end
