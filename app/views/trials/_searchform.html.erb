@@ -78,12 +78,12 @@ width: 110px;") %>
 
 
   <% if params[:mf].present? %>
-  <%= link_to "less filters", root_path(:q => params[:q],:pc => params[:pc],:td => params[:td],:vt => params[:vt],:age => params[:age],:gender => params[:gender],:age => params[:age],:ot => params[:ot],:anchor => "h"), :class =>"alignleft" %>
+  <%= link_to "less filters", trials_path(:q => params[:q],:pc => params[:pc],:td => params[:td],:vt => params[:vt],:age => params[:age],:gender => params[:gender],:age => params[:age],:ot => params[:ot],:anchor => "h"), :class =>"alignleft" %>
   <% else %>
-  <%= link_to "more filters", root_path(:q => params[:q],:pc => params[:pc],:td => params[:td],:vt => params[:vt],:age => params[:age],:gender => params[:gender],:age => params[:age],:ot => params[:ot],:mf => "t",:anchor => "h"), :class =>"alignleft" %>
+  <%= link_to "more filters", trials_path(:q => params[:q],:pc => params[:pc],:td => params[:td],:vt => params[:vt],:age => params[:age],:gender => params[:gender],:age => params[:age],:ot => params[:ot],:mf => "t",:anchor => "h"), :class =>"alignleft" %>
   <% end %>
 
-  <%= link_to "clear", root_path(:anchor => "h"), :class =>"alignright" %>
+  <%= link_to "clear", trials_path(:anchor => "h"), :class =>"alignright" %>
   <div class="clear" style="margin-bottom:50px;"></div>
 
 
