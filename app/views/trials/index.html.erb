@@ -106,7 +106,7 @@
 
       <!-- @TODO? LETS GET THIS IN THE CONTROLLER -->
       <% unless trial.sites.first.blank? || params[:pc].blank? %>
-      <% @site = trial.sites.near(session[:coordinates]).first %>
+      <% @site = trial.sites.near(session[:coordinates],params[:td]).first %>
           <% unless @site.blank? %>
 
           <tr>
