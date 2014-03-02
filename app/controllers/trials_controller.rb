@@ -7,13 +7,10 @@ class TrialsController < ApplicationController
 
     unless params[:pc].blank?
         session[:coordinates] =  Geocoder.coordinates("#{params[:pc]}, United States")
-        if coordinates.blank? || coordinates == [39.49593, -98.990005] # The equivalent of the center of the US.   
-          coordinates = [40.7142700 , -74.0059700] # just putting in a fake value for now @TODO
-        end
     end
 
-    @trials = Trial.search_for(params[:q]).age(params[:age]).control?(params[:vt]).gender(params[:gender]).type(params[:ty]).phase(params[:ph]).fda(params[:fda]).focus(params[:focus]).close_to(coordinates, params[:td]).order(params[:ot]||"lastchanged_date DESC").paginate(:page => params[:page], :per_page => 10)
-
+    @trials = Trial.search_for(params[:q]).age(params[:age]).control?(params[:vt]).gender(params[:gender]).type(params[:ty]).phase(params[:ph]).fda(params[:fda]).focus(params[:focus]).close_to(session[:coordinates], params[:td]).order(params[:ot]||"lastchanged_date DESC").paginate(:page => params[:page], :per_page => 10)
+    
     # eric's refactoring recommendation -    @sites = Site.near(params[:pc],params[:td]).where(trials_ids: @trial_ids).paginate(:page => params[:page], :per_page => 10)
     session[:search_results] = request.url
     session[:age] = params[:age]
