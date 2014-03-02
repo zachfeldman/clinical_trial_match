@@ -7,15 +7,8 @@ ClinicalTrialMatcher::Application.routes.draw do
   get "/importer" => 'importer#show'
 
   post "/importer/run"
-  get "/importer/run"
-
   post "/importer/delete_all"
-  get "/importer/delete_all"
-
   post "/importer/clear_date"
-  get "/importer/clear_date"
-
-  get "/importer/new_match_alert"
   post "/importer/new_match_alert"
 
   get "/user_mailer/new_match_alert"
