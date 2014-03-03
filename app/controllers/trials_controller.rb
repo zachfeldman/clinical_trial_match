@@ -4,7 +4,7 @@ class TrialsController < ApplicationController
   def index
 
     @focuses = Focus.all
-
+    session[:coordinates] = ""
     unless params[:pc].blank?
         session[:coordinates] =  Geocoder.coordinates("#{params[:pc]}, United States")
         # session[:coordinates] = [40.7142700 , -74.0059700]
