@@ -18,7 +18,7 @@
     <p><%= "Of those site, #{@sites.geocoded.count} are geocoded and #{@sites.not_geocoded.count} do not have latitude and longitude."  %></p>
     
 <% unless @sites.not_geocoded.count == 0 %>    
-	<%= link_to "Login to add latitude and longitude for non-gecoded sites", importer_show_url %>
+	<%= link_to "Login to add latitude and longitude for non-gecoded sites", importer_url %>
 <% end %>
 
   </body>
