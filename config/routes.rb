@@ -1,7 +1,6 @@
 ClinicalTrialMatcher::Application.routes.draw do
 
   root "homepage#index"
-  get "focuses/show"
   get "/omniauth_callbacks/twitter"
   get "/importer/show"
   get "/importer" => 'importer#show'
