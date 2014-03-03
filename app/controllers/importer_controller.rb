@@ -1,4 +1,6 @@
 class ImporterController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /importer
   # GET /importer/show
   def show
