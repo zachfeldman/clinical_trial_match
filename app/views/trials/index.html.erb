@@ -1,6 +1,4 @@
-<div id="breadcrumbs" style="margin:20px 0px">
-      <%= link_to raw('&laquo; Back to About'), '/' %>
-  </div>
+
 <div class="search_bar">
   <%= render "searchform" %></div>
 
@@ -23,12 +21,6 @@
      <!--  <%= link_to "Create a profile", new_user_registration_path, class: "bold" %> to receive emails of future matches. --></p>
       </div>
   <% end %>
-
-<% if @trials.count > 10 %>
-  <div class="pagination2">
-    <%= will_paginate @trials, :container =>false %>
-  </div>
-<% end %>
 
   <%= form_tag("", method: "get", id: "ot") do %>
 
