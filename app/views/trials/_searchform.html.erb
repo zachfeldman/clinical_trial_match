@@ -12,9 +12,12 @@
   <%= select_tag(:td,
   options_for_select([['Will travel 25 miles', 25], ['Will travel 50 miles', 50], ['Will travel 100 miles', 100], ['Will travel 300 miles', 300]], params[:td]||100 )) %>
   <div class="clear"></div>
+    <%= label_tag(:vt_patient, "Participant Type:", :class => "inlineFormLabel") %>
+    <div style="clear:both"></div>
   <%= radio_button_tag(:vt, "patient", (params[:vt] == "patient" ? true : false)) %>
 
   <!--  @TODO? Need to put in global variable for disease -->
+
   <%= label_tag(:vt_patient, ClinicalTrialMatcher::Application.config.filter_label) %>
   <div class="clear"></div>
   <%= radio_button_tag(:vt, "control", (params[:vt] == "control" ? true : false)) %>
