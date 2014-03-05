@@ -1,19 +1,17 @@
+<h3>Search Trials</h3>
 <%= form_tag("", method: "get") do %>
-  <%= label_tag(:q, "Search by Keyword:") %>
-  <%= text_field_tag(:q, params[:q]) %>
-
-  <div class="clear"></div>
-  <%= label_tag(:pc, "Zip Code:", :class => "inlineFormLabel") %>
-  <div style="clear:both"></div>
+  <%= label_tag(:pc, "Zip:", :class => "inlineFormLabel") %>
   <%= text_field_tag(:pc, params[:pc], :class => "inlineFormField") %>
   <div class="clear"></div>
-  <%= label_tag(:td, "Travel Distance:", :class => "inlineFormLabel") %>
-  <div style="clear:both"></div>
   <%= select_tag(:td,
   options_for_select([['Will travel 25 miles', 25], ['Will travel 50 miles', 50], ['Will travel 100 miles', 100], ['Will travel 300 miles', 300]], params[:td]||100 )) %>
+
   <div class="clear"></div>
-    <%= label_tag(:vt_patient, "Participant Type:", :class => "inlineFormLabel") %>
-    <div style="clear:both"></div>
+  <hr>
+  <%= label_tag(:q, "Keyword:") %>
+  <%= text_field_tag(:q, params[:q]) %>
+  <div class="clear"></div>
+  <hr>
   <%= radio_button_tag(:vt, "patient", (params[:vt] == "patient" ? true : false)) %>
 
   <!--  @TODO? Need to put in global variable for disease -->
@@ -23,12 +21,11 @@
   <%= radio_button_tag(:vt, "control", (params[:vt] == "control" ? true : false)) %>
   <%= label_tag(:vt_control, "I am a control") %>
   <div class="clear"></div>
-
+<hr>
   <%= label_tag(:age, "Age:", :class => "inlineFormLabel") %>
-  <div style="clear:both"></div>
   <%= text_field_tag(:age, params[:age], :class => "inlineFormField") %>
   <div class="clear"></div>
-
+<hr>
   <%= label_tag(:gender, "Gender:", :class => "inlineFormLabel") %>
 
   <div class="genderContainer" >
@@ -38,9 +35,11 @@
   <%= radio_button_tag(:gender, "female", (params[:gender] == "female" ? true : false)) %>
   <%= label_tag(:gender_female, "F") %>
   </div>
+   <div class="clear"></div>
 
     <!-- EXPANDABLE PART OF FORM -->
     <% if params[:mf].present? %>
+    <hr>
     <%= label_tag(:ty, "Type:", :class => "inlineSelectLabel") %>
     <%= select_tag(:ty,
     options_for_select(  [['All', 'all'],['Observational', 'obs'], ['Interventional', 'int']], params[:ty]||'all' ), :class => "inlineFormSelect") %>
@@ -51,12 +50,12 @@
     options_for_select(  [['All', 'all'],['Phase 0', '0'], ['Phase 1', '1'],['Phase 2', '2'], ['Phase 3', '3'],['Phase 4', '4']], params[:ph]||'all' ), :class => "inlineFormSelect") %>
     <div class="clear"></div>
 
-
+<hr>
     <%= label_tag(:fda, "FDA:", :class => "inlineSelectLabel") %>
     <%= select_tag(:fda,
     options_for_select(  [['All', 'all'],['Regulated', 'reg'], ['Non Regulated', 'nreg']], params[:fda]||'all' ), :class => "inlineFormSelect") %>
     <div class="clear"></div>
-
+<hr>
 
 <!-- @TODO? What's a modal technique for rails to make it look similar to https://www.michaeljfox.org/foundation/news-tags.php -->
     <%= label_tag(:focus, "Focus:", :class => "inlineSelectLabel") %>
