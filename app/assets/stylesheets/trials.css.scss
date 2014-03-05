@@ -61,10 +61,17 @@ list-style: none;
 li{
 	margin:0;
 }
+.hoverableLink:hover{
+	background-color: #ECECEC !important;
+	cursor:pointer;
+}
 .trialResults{
 	margin-bottom: 2em;
 	background: #F6F6F6;
 	padding: 20px;
+}
+.trialResults a:hover{
+	text-decoration: none;
 }
 .inline p,
 .inline h4{

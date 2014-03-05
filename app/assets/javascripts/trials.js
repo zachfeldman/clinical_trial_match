@@ -14,6 +14,11 @@ ready = function() {
         }
     });
 
+    $(".hoverableLink").click(function(){
+    var url = $(this).find("a:first").attr('href');
+    document.location.href = url;
+    });
+
     $('#expandExclusion').on("click",function () {
         $('#exclusionCriteria').slideToggle();
         var arrowPosition = $("#expandExclusion .expandIcon").html();

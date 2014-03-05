@@ -50,7 +50,7 @@
 
 
   <% @trials.each do |trial| %>
-  <div class="trialResults">
+  <div class="trialResults hoverableLink">
   <h3><%= link_to trial.title, trial %></h3>
 <% unless trial.sites.first.blank? || params[:pc].blank? %>
       <% @site = trial.sites.near(session[:coordinates],params[:td]).first %>
