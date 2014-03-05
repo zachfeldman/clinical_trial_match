@@ -63,6 +63,11 @@
 float:none;
 margin-right:1px;
 }
+.trialResults p,
+.trialResults h4{
+  display: inline;
+}
+
 .search_results{
   float:left;
   width: 70%;

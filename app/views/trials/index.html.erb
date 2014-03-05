@@ -37,7 +37,7 @@
   <%= hidden_field_tag 'focus', params[:focus], id: "filter_capture11" %>
 
 
-  <p style="float:right;">
+  <p style="text-align:right;">
     Displaying
     <%=@trials.total_entries %>
     <%= @trials.total_entries.to_i >
@@ -50,68 +50,42 @@
 
 
   <% @trials.each do |trial| %>
-  <table class="table">
-    <tbody>
-
-      <tr>
-        <td colspan="2">
-          <%= link_to trial.title, trial %></td>
-      </tr>
-
-      <tr>
-        <td>Date Updated:</td>
-        <td>
-          <%= trial.lastchanged_date.strftime("%m/%d/%Y") %></td>
-      </tr>
-      <tr>
-        <td>Focus:</td>
-        <td>
-          <div class="tdEllipsis">
-            <%= trial.focus %>
-          </div>
-
-        </td>
-      </tr>
-      <tr>
-        <td style="width:120px;">Type:</td>
-        <td>
-          <%= trial.study_type %></td>
-      </tr>
-      <tr>
-        <td>Phase:</td>
-        <td>
-          <%= trial.phase %></td>
-      </tr>    
-
-      <tr>
-        <td>Controls:</td>
-        <td>
-          <%= (trial.healthy_volunteers == "Accepts Healthy Volunteers") ? "Yes" : "No"   %></td>
-      </tr>
-      <tr>
-        <td>Gender:</td>
-        <td>
-          <%= trial.gender %></td>
-      </tr>
-      <tr>
-        <td>Age:</td>
-        <td>
-          <%= trial.originalminage.to_s + " - " + trial.originalmaxage.to_s %></td>
-      </tr>
-
-      <!-- @TODO? LETS GET THIS IN THE CONTROLLER -->
-      <% unless trial.sites.first.blank? || params[:pc].blank? %>
+  <div class="trialResults">
+  <h3><%= link_to trial.title, trial %></h3>
+<% unless trial.sites.first.blank? || params[:pc].blank? %>
       <% @site = trial.sites.near(session[:coordinates],params[:td]).first %>
           <% unless @site.blank? %>
-
-          <tr>
-            <td>Closest Site:</td>
-            <td>
-              <%= "#{@site.facility} - (#{@site.distance_from(session[:coordinates]).round()} miles away)"%></td>
-          </tr>
-          <% end %>
-      <% end %></tbody>
-  </table>
+<h4>Closest Site:</h4>
+            <p><%= "#{@site.facility} - (#{@site.distance_from(session[:coordinates]).round()} miles away)"%></p>
+       <% end %>
+      <% end %>
+      <div class="clear"></div>
+           <h4>Focus:</h4>
+        <p>
+            <%= trial.focus %>
+          </p>
+<div class="clear"></div>
+<div class="inline">
+       <h4>Type:</h4>
+        <p>
+          <%= trial.study_type %></p>
+      <h4>Phase:</h4>
+        <p>
+          <%= trial.phase %></p>
+      <h4>Controls:</h4>
+        <p>
+          <%= (trial.healthy_volunteers == "Accepts Healthy Volunteers") ? "Yes" : "No"   %></p>
+     <h4>Gender:</h4>
+        <p>
+          <%= trial.gender %></p>
+      <h4>Age:</h4>
+        <p>
+          <%= trial.originalminage.to_s + " - " + trial.originalmaxage.to_s %></p>
+          <div class="clear"></div>
+        </div>
+</div>
+      <!-- @TODO? LETS GET THIS IN THE CONTROLLER -->
+      
   <% end %>
 
 <% if @trials.count > 10 %>
