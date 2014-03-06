@@ -24,7 +24,7 @@
     background: #f1f1f1;
     border: 1px solid #e5e5e5;
     text-align: center;
-    padding: 1em;
+    padding: 0.2em;
     cursor: default; }
 
   .pagination2 a, .pagination2 span {
@@ -61,7 +61,8 @@
     background: #F6F6F6;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-    padding: 20px
+    padding: 20px;
+    border: 1px solid #E5E5E5;
   }
 
   .search_bar input[type=radio] {

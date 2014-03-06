@@ -47,7 +47,10 @@
 
   <% end %>
 
-
+<% if @trials.count > 10 %>
+  <div class="pagination2" style="margin-bottom:20px;">
+    <%= will_paginate @trials, :container =>false %></div>
+<% end %>
 
   <% @trials.each do |trial| %>
   <div class="trialResults hoverableLink">
@@ -89,7 +92,7 @@
   <% end %>
 
 <% if @trials.count > 10 %>
-  <div class="pagination2" style="margin-bottom:50px;">
+  <div class="pagination2" style="margin-bottom:20px;">
     <%= will_paginate @trials, :container =>false %></div>
 <% end %>
 
