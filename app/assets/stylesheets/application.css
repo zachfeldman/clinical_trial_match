@@ -197,8 +197,10 @@
     text-decoration: none;
   }
   .subNav{
-    font-size: 0.8em;
-    margin: 20px 0 0 70px;
+    margin: 0 auto;
+    position: relative;
+    max-width: 966px;
+    overflow: visible;
   }
   .subNav h2{
     display: inline;
