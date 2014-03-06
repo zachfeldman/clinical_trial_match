@@ -4,7 +4,7 @@ class TrialsController < ApplicationController
   def index
 
     @focuses = Focus.all
-
+    session[:coordinates] = ""
     unless params[:pc].blank?
         session[:coordinates] =  Geocoder.coordinates("#{params[:pc]}, United States")
         # session[:coordinates] = [40.7142700 , -74.0059700]
@@ -15,6 +15,13 @@ class TrialsController < ApplicationController
     end
 
     @trials = Trial.search_for(params[:q]).age(params[:age]).control?(params[:vt]).gender(params[:gender]).type(params[:ty]).phase(params[:ph]).fda(params[:fda]).focus(params[:focus]).close_to(session[:coordinates], params[:td]).order(params[:ot]||"lastchanged_date DESC").paginate(:page => params[:page], :per_page => 10)
+
+    trial_ids_array = []
+    # @TODO: NEED TO REFACTOR TO PREVENT QUERYING THIS TWICE JUST BECAUSE OF PAGINATE.
+    # @TODO: DO I NEED MEMCACHE TO SOLVE FOR RAILS.CACHE
+    @all_trials = Trial.search_for(params[:q]).age(params[:age]).control?(params[:vt]).gender(params[:gender]).type(params[:ty]).phase(params[:ph]).fda(params[:fda]).focus(params[:focus]).close_to(session[:coordinates], params[:td]).order(params[:ot]||"lastchanged_date DESC")
+    @all_trials.each {|trial| trial_ids_array << trial.id}
+    Rails.cache.write('trial_ids', trial_ids_array)
 
     # eric's refactoring recommendation -    @sites = Site.near(params[:pc],params[:td]).where(trials_ids: @trial_ids).paginate(:page => params[:page], :per_page => 10)
     session[:search_results] = request.url
@@ -44,7 +51,18 @@ class TrialsController < ApplicationController
       @sites = @trial.sites
     end
 
+    trial_ids = Rails.cache.read('trial_ids')
+    tmpIndex = trial_ids.index(params[:id].to_i)
+    tmpIndexLength = trial_ids.count
 
+    #@TODO Refactor this
+    if tmpIndex == (tmpIndexLength-1)
+      @next_trial = trial_ids[0]
+    else
+      @next_trial = trial_ids[tmpIndex+1]
+    end
+    
+    @previous_trial = trial_ids[tmpIndex-1]
 
   end
 

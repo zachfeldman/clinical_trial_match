@@ -1,4 +1,6 @@
 class ImporterController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /importer
   # GET /importer/show
   def show
@@ -141,7 +143,7 @@ class ImporterController < ApplicationController
 	@import.save
 
 	Newmatch.new_match_report.deliver
-	redirect_to importer_show_path, notice: "All trials were successfully imported!"	 
+	redirect_to importer_path, notice: "All trials were successfully imported!"	 
 
   end
 
@@ -149,7 +151,7 @@ class ImporterController < ApplicationController
   def delete_all
   	@trial = Trial.delete_all
   	@sites = Site.delete_all
-  	redirect_to importer_show_path, notice: "All trials and sites were deleted!"
+  	redirect_to importer_path, notice: "All trials and sites were deleted!"
   end
 
   def clear_date
@@ -158,13 +160,13 @@ class ImporterController < ApplicationController
 	@import.valid_trials = 0
 	@import.valid_sites = 0
   	@import.save
-  	redirect_to importer_show_path, notice: "The last import date was reset."
+  	redirect_to importer_path, notice: "The last import date was reset."
   end
 
   def new_match_alert
   	#UserMailer.new_match_alert.deliver
 	Newmatch.new_match_report.deliver
-  	redirect_to importer_show_path, notice: "Your emails were sent"
+  	redirect_to importer_path, notice: "Your emails were sent"
   end
 
 

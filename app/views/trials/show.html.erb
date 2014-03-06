@@ -1,6 +1,13 @@
 <div id="breadcrumbs">
     <%= link_to raw('&laquo; Back to Search'), session[:search_results] %>
+
+    <div class="alignright">
+        <%= link_to raw('Previous Trial'), trial_path(@previous_trial) %>     |    <%= link_to raw('Next Trial'), trial_path(@next_trial) %> 
+    </div>
 </div>
+
+
+
 <div id="td_contents">        
         <h2 class="colorOrange"><%= @trial.title %></h2>
         <h3 class="briefAbstract"><%= @trial.official_title %></h3>
@@ -180,8 +187,13 @@
         <%= link_to (image_tag "logo-clinicaltrials.gif",:height => 30), "http://clinicaltrials.gov/ct2/show/#{@trial.nct_id}",:target => "_blank" %>
         </div>
     </div>
+   
     </div>
 
+    <br>
+    <div>
+        <%= link_to raw('Previous Trial'), trial_path(@previous_trial) %>     |    <%= link_to raw('Next Trial'), trial_path(@next_trial) %> 
+    </div>
 <!--     <div id="rightSideCallouts">
         <div style="height:100px; width:100%; background-color:orange; margin:0.83em 0;">
             <h2>Coming soon...</h2>
