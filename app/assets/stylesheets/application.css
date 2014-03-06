@@ -18,8 +18,24 @@
 @media screen and (max-width: 480px) {
   .search_bar{
     width: 73% !important;
+  }
+  .none{
+  display: block;
+ }
+  .pagination2 {
+  width: 93%%;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  .search_bar{
+    width: 24% !important;
     margin: 0px 20px !important;
     padding: 2em !important;
+  }
+  search_results{
+    width: 60% !important;
   }
   input[type=text], 
   input[type=email] {
@@ -50,8 +66,7 @@
     float: none;
   }
  .pagination2 {
-  margin-bottom: 50px;
-  width: 80%;
+  width: 93%%;
   }
   label[for=q],
   label[for=age],
@@ -59,14 +74,12 @@
   label[for=pc]{
     display: block;
   }
-  .clear .none{
-  display: block;
+  .none{
+  display: none;
  }
-}
-
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
-
+ label{
+  font-size: 1.1em;
+ }
 }
 
  .clear .none{
