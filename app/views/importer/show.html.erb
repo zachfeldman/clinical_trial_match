@@ -18,18 +18,7 @@
 <br>
 <hr>
 <p><%= "There are #{@trials.all.count} trials with #{@sites.all.count} site locations."  %></p>
-<p><%= "There are #{@sites.geocoded.count} geocoded sites but #{@sites.not_geocoded.count} are not geocoded."  %></p>
-<hr>
-<h3>Sites Not Geocoded</h3>
-<% @sites.not_geocoded.each do |site| %>
 
-	<% unless site.trial.nil? %>
-		<%= link_to truncate(site.trial.title, :length => 50), site.trial %>
-		<%= "(#{site.facility})" %>
-	<% end %>
-
-	<br>
-<% end %>
 <br>
 
 
