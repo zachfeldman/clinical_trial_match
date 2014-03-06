@@ -1,7 +1,21 @@
 // Place all the styles related to the Trials controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@media screen and (max-width: 480px) {
+	.search_results{
+		width: 100%;
+		margin: 1em;
+	}
+	.trialResults{
+		margin-bottom: 1em;
+		width: 80%;
+	}
+	#ot p{
+		display: inline-block;
+		float: none;
+	}
 
+}
 td{
 	overflow: hidden;
 	text-overflow: ellipsis;

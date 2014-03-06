@@ -1,6 +1,7 @@
 <h3>Search Trials</h3>
 <%= form_tag("", method: "get") do %>
   <%= label_tag(:pc, "Zip:", :class => "inlineFormLabel") %>
+    <div class="clear none"></div>
   <%= text_field_tag(:pc, params[:pc], :class => "inlineFormField") %>
   <div class="clear"></div>
   <%= select_tag(:td,
@@ -23,10 +24,12 @@
   <div class="clear"></div>
 <hr>
   <%= label_tag(:age, "Age:", :class => "inlineFormLabel") %>
+      <div class="clear none"></div>
   <%= text_field_tag(:age, params[:age], :class => "inlineFormField") %>
   <div class="clear"></div>
 <hr>
   <%= label_tag(:gender, "Gender:", :class => "inlineFormLabel") %>
+      <div class="clear none"></div>
 
   <div class="genderContainer" >
     <div style="clear:both"></div>
@@ -79,7 +82,7 @@ width: 110px;") %>
   <% end %>
 
 
-
+<div class="clear"></div>
   <% if params[:mf].present? %>
   <%= link_to "less filters", trials_path(:q => params[:q],:pc => params[:pc],:td => params[:td],:vt => params[:vt],:age => params[:age],:gender => params[:gender],:age => params[:age],:ot => params[:ot],:anchor => "h"), :class =>"alignleft" %>
   <% else %>

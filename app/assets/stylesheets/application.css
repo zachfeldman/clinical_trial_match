@@ -14,7 +14,64 @@
  *= require jquery.ui.dialog
  */
 
+/* Landscape phones and down */
+@media screen and (max-width: 480px) {
+  .search_bar{
+    width: 73% !important;
+    margin: 0px 20px !important;
+    padding: 2em !important;
+  }
+  input[type=text], 
+  input[type=email] {
+  padding: 0.8em !important;
+  width: 90% !important;
+  }
+  hr{
+    display: none;
+  }
+  .inlineFormLabel{
+    float: none;
+    display: block;
+  }
+  label[for=vt_patient]{
+    margin-top: 1em;
+  }
+  #vt_patient{
+    margin-top: 1em;
+  }
+   #vt_control{
+    margin-bottom: 1em;
+  }
+  .alignleft{
+    float: none;
+    margin: none;
+  }
+  .alignright{
+    float: none;
+  }
+ .pagination2 {
+  margin-bottom: 50px;
+  width: 80%;
+  }
+  label[for=q],
+  label[for=age],
+  label[for=gender],
+  label[for=pc]{
+    display: block;
+  }
+  .clear .none{
+  display: block;
+ }
+}
 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+}
+
+ .clear .none{
+  display: none;
+ }
  .pagination2 {
   background: #f1f1f1;
   border: 1px solid #e5e5e5;
