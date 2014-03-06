@@ -15,29 +15,226 @@
  */
 
 /* Landscape phones and down */
-@media screen and (max-width: 480px) {
-  .search_bar{
-    width: 73% !important;
+
+@media screen and (min-device-width: 768px){
+   .clear .none{
+    display: none;
+   }
+   .pagination2 {
+    background: #f1f1f1;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+    padding: 1em;
+    cursor: default; }
+
+  .pagination2 a, .pagination2 span {
+      padding: 0.2em 0.3em; }
+
+  .pagination2 .disabled {
+      color: #aaaaaa; }
+
+  .pagination2 .current {
+      font-style: normal;
+      font-weight: bold;
+      background-color: #bebebe;
+      display: inline-block;
+      width: 1.4em;
+      height: 1.4em;
+      line-height: 1.5;
+      -moz-border-radius: 1em;
+      -webkit-border-radius: 1em;
+      border-radius: 1em;
+      text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+
+  .pagination2 a {
+      text-decoration: none;
+      color: black; }
+
+  .pagination2 a:hover, .pagination2 a:focus {
+    text-decoration: underline;
+    }
+
+  .search_bar {
+    float: left;
+    width: 20%;
+    margin: 40px 30px 0px 0px;
+    background: #F6F6F6;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 20px
   }
-  .none{
-  display: block;
- }
-  .pagination2 {
-  width: 93%%;
+
+  .search_bar input[type=radio] {
+  float:none;
+  margin-right:1px;
+  }
+  .trialResults p,
+  .trialResults h4{
+    display: inline;
+  }
+
+  .search_results{
+    float:left;
+    width: 70%;
+  }
+  .clear{
+    clear:both;
+    margin: 0px;
+  }
+
+  input[type=password], input[type=email], textarea {
+    border: 4px solid #ECECEC;
+    font-size: 0.875em;
+    padding: 0.25em;
+  }
+
+  .alert{
+    color:red;
+    font-weight:bold;
+  }
+
+  .notification{
+    color:yellow;
+    font-weight:bold;
+  }
+
+  .blueAlertDiv{
+      padding: 8px 14px 8px 14px;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #3a87ad;
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+  }
+
+  .alert{
+      line-height:30px;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #B94A48;
+      background-color: #F2DEDE;
+      border-color: #EBCCD1;
+  }
+  .notice{
+      line-height:30px;
+      margin-bottom: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #468847;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+  }
+
+
+
+
+  .bold {
+    font-weight:bold;
+  }
+
+  button.close {
+    padding: 0;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    -webkit-appearance: none;
+  }
+
+  .close {
+    float: right;
+    font-size: 60px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #FFF;
+    opacity: .2;
+    filter: alpha(opacity=20);
+  }
+
+  input[type=text],
+  input[type=email] {
+    padding: 0.25em;
+    width: 70%;
+  }
+  .inlineFormField{
+    width:35%;
+  }
+  .inlineFormLabel{
+    float: left;
+  }
+  .inlineSelectLabel{
+    float:left;
+    padding-right:5px;
+    padding-top:3px;
+    margin-bottom:8px;
+    width:40px;
+  }
+
+  .inlineFormSelect{
+    margin-top: 3px;
+    margin-left: 10px;
+  }
+
+  .genderContainer{
+    float: left;
+    margin: 0 0 0 10px;
+  }
+  .mainTitle:hover{
+    text-decoration: none;
+  }
+  .subNav{
+    font-size: 0.8em;
+    margin: 20px 0 0 70px;
+  }
+  .subNav h2{
+    display: inline;
+    color: grey;
+    margin: 0px 10px;
+  }
+  .subNav a{
+    text-decoration: none;
+  }
+  @media screen and (min-width: 1000px){
+      #h{
+      font-size: 2.75em; 
+    }
+  }
+  #td{
+      margin: 20px 0 20px 4px;
+  }
+  .btn-orange{
+    margin: 20px 0px;
+  }
+  h3{
+    margin: 0 0 20px 0;
   }
 }
 
 /* Landscape phone to portrait tablet */
 @media screen and (max-width: 767px) {
   .search_bar{
-    width: 24% !important;
-    margin: 0px 20px !important;
-    padding: 2em !important;
+    width: 24%;
+    margin: 0px 20px;
+    padding: 2em;
   }
   input[type=text], 
   input[type=email] {
-  padding: 0.8em !important;
-  width: 90% !important;
+  padding: 0.8em;
+  width: 90%;
   }
   hr{
     display: none;
@@ -78,209 +275,15 @@
   font-size: 1.1em;
  }
 }
-
- .clear .none{
-  display: none;
+@media screen and (max-width: 480px) {
+  .search_bar{
+    width: 73%;
+  }
+  .none{
+  display: block;
  }
- .pagination2 {
-  background: #f1f1f1;
-  border: 1px solid #e5e5e5;
-  text-align: center;
-  padding: 1em;
-  cursor: default; }
-
-.pagination2 a, .pagination2 span {
-    padding: 0.2em 0.3em; }
-
-.pagination2 .disabled {
-    color: #aaaaaa; }
-
-.pagination2 .current {
-    font-style: normal;
-    font-weight: bold;
-    background-color: #bebebe;
-    display: inline-block;
-    width: 1.4em;
-    height: 1.4em;
-    line-height: 1.5;
-    -moz-border-radius: 1em;
-    -webkit-border-radius: 1em;
-    border-radius: 1em;
-    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
-
-.pagination2 a {
-    text-decoration: none;
-    color: black; }
-
-.pagination2 a:hover, .pagination2 a:focus {
-  text-decoration: underline;
-  }
-
-.search_bar {
-  float: left;
-  width: 20%;
-  margin: 40px 30px 0px 0px;
-  background: #F6F6F6;
-  border-radius: 5px;
-  -webkit-border-radius: 5px;
-  padding: 20px
-}
-
-.search_bar input[type=radio] {
-float:none;
-margin-right:1px;
-}
-.trialResults p,
-.trialResults h4{
-  display: inline;
-}
-
-.search_results{
-  float:left;
-  width: 70%;
-}
-.clear{
-  clear:both;
-  margin: 0px;
-}
-
-input[type=password], input[type=email], textarea {
-  border: 4px solid #ECECEC;
-  font-size: 0.875em;
-  padding: 0.25em;
-}
-
-.alert{
-  color:red;
-  font-weight:bold;
-}
-
-.notification{
-  color:yellow;
-  font-weight:bold;
-}
-
-.blueAlertDiv{
-    padding: 8px 14px 8px 14px;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    border: 1px solid #fbeed5;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #3a87ad;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
-}
-
-.alert{
-    line-height:30px;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    border: 1px solid #fbeed5;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #B94A48;
-    background-color: #F2DEDE;
-    border-color: #EBCCD1;
-}
-.notice{
-    line-height:30px;
-    margin-bottom: 20px;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    border: 1px solid #fbeed5;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    font-size: 16px;
-    color: #468847;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-
-
-
-.bold {
-  font-weight:bold;
-}
-
-button.close {
-  padding: 0;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0);
-  border: 0;
-  -webkit-appearance: none;
-}
-
-.close {
-  float: right;
-  font-size: 60px;
-  font-weight: bold;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #FFF;
-  opacity: .2;
-  filter: alpha(opacity=20);
-}
-
-input[type=text],
-input[type=email] {
-  padding: 0.25em;
-  width: 70%;
-}
-.inlineFormField{
-  width:35%;
-}
-.inlineFormLabel{
-  float: left;
-}
-.inlineSelectLabel{
-  float:left;
-  padding-right:5px;
-  padding-top:3px;
-  margin-bottom:8px;
-  width:40px;
-}
-
-.inlineFormSelect{
-  margin-top: 3px;
-  margin-left: 10px;
-}
-
-.genderContainer{
-  float: left;
-  margin: 0 0 0 10px;
-}
-.mainTitle:hover{
-  text-decoration: none;
-}
-.subNav{
-  font-size: 0.8em;
-  margin: 20px 0 0 70px;
-}
-.subNav h2{
-  display: inline;
-  color: grey;
-  margin: 0px 10px;
-}
-.subNav a{
-  text-decoration: none;
-}
-@media screen and (min-width: 1000px){
-    #h{
-    font-size: 2.75em; 
+  .pagination2 {
+  width: 93%%;
   }
 }
-#td{
-    margin: 20px 0 20px 4px;
-}
-.btn-orange{
-  margin: 20px 0px;
-}
-h3{
-  margin: 0 0 20px 0;
-}
+

@@ -1,6 +1,131 @@
 // Place all the styles related to the Trials controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media screen and (min-device-width: 768px){
+
+
+
+	td{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		/*white-space: nowrap;*/
+		padding: 0.5% !important;
+	}
+
+	.expandableTrialDetails {
+		background-color: #e8e8e8;
+		font-weight:bold;
+		display: block;
+		line-height: 36px;
+		padding-left: 20px;
+		padding-right: 2px;
+		color: #333;
+		font-size: 14px;
+		margin-top: 2px;
+		cursor:pointer;
+	}
+
+	.expandableTrialDetails:hover {background-color:#999; color:white;}
+
+	.expandIcon {color: #666;
+	font-weight: bold;
+	font-size: 20px;
+	float: right;
+	margin-right: 12px;
+	text-shadow: 1px 1px white;}
+
+	.expandableTrialDetails:hover .expandIcon {
+	    color:white;
+	    text-shadow: 1px 1px #666;
+	}
+
+	.siteLocationTable{border: 1px solid #CCC;}
+	.siteLocationTable th { padding: 0.3em; background-color: #e8e8e8; margin-bottom: 12px; overflow: auto; text-transform: capitalize; font-weight:normal; font-size: 16px; color: #666; border:1px solid #e8e8e8;}
+	.siteLocationTable th span { padding-left: 10px; margin-right: 5px; margin-left: 10px;background: url('https://foxtrialfinder.michaeljfox.org/images/findtrial/trial-details/nav_carrot_sub.png') 0 4px no-repeat; }
+	.siteLocationTable td {border:none;}
+	.siteLocationTable th.first{width:60%;}
+
+	.criteria { position: relative; border-top: 1px dashed #CCC; margin-top: 20px; /*padding-top: 20px;*/ }
+	.criteria h4 { float: left; }
+	h4.detailDesc { font-size: 16px; margin-bottom: 5px; }
+	ul.criteriaList { clear: left; line-height: 2em; margin-left:30px; }
+	ul.criteriaList li { padding: 5px 5px 0px 10px; list-style:circle; }
+	ul.criteriaList li.alt { background-color: #FFEFCC; }
+	ul.criteriaList a { color: #f47522; display: block; font-size: 13px; font-weight: bold; height: 16px; line-height: 16px; background: url("/images/global/button_carrot.gif") no-repeat 0 0; padding: 0 0 0 23px; margin: 2px 0; }
+	ul.criteriaList a:hover { background-position: left bottom; }
+
+	/*ul.addlInfoList li { padding: 5px 5px 5px 10px; margin-bottom: 2px; background-color: #FFEFCC; }*/
+	ul.addlInfoList li { padding: 5px 5px 5px 0px; margin-bottom: 2px; }
+
+	ul{
+	margin:0;
+	list-style: none;
+	}
+	li{
+		margin:0;
+	}
+	.hoverableLink:hover{
+		background-color: #ECECEC !important;
+		cursor:pointer;
+	}
+	.trialResults{
+		margin-bottom: 2em;
+		background: #F6F6F6;
+		padding: 20px;
+	}
+	.trialResults a:hover{
+		text-decoration: none;
+	}
+	.inline p,
+	.inline h4{
+	font-size: .9em;
+	left: 1.2em;
+	}
+	.inline p{
+		margin-right: .5em;
+
+	}
+	.trialResults p,
+	.trialResults h4{
+	  display: inline;
+	  position: relative;
+		left: 1em;
+	}
+
+	#td_contents{
+	/*	width:70%;*/
+		float:left;
+	}
+	#rightSideCallouts{
+		float:right;
+		width:25%;
+	}
+	.tdEllipsis{
+		width:610px;
+		overflow:hidden;
+		white-space:nowrap;
+		text-overflow: ellipsis;
+	}
+
+	#exclusionCriteria h4{
+		text-transform: uppercase;
+	}
+
+	.whitesmokeBorder {
+		border: 2px solid #F5F5F5;
+	}
+	.td_purpose{
+		padding: 10px 30px;
+		color: #666;
+	}
+}
+
+@media screen and (max-width: 767px) {
+.search_results{
+    width: 60%;
+  }
+}
 @media screen and (max-width: 480px) {
 	.search_results{
 		width: 100%;
@@ -17,122 +142,3 @@
 
 }
 
-@media screen and (max-width: 767px) {
-.search_results{
-    width: 60% !important;
-  }
-}
-
-td{
-	overflow: hidden;
-	text-overflow: ellipsis;
-	/*white-space: nowrap;*/
-	padding: 0.5% !important;
-}
-
-.expandableTrialDetails {
-	background-color: #e8e8e8;
-	font-weight:bold;
-	display: block;
-	line-height: 36px;
-	padding-left: 20px;
-	padding-right: 2px;
-	color: #333;
-	font-size: 14px;
-	margin-top: 2px;
-	cursor:pointer;
-}
-
-.expandableTrialDetails:hover {background-color:#999; color:white;}
-
-.expandIcon {color: #666;
-font-weight: bold;
-font-size: 20px;
-float: right;
-margin-right: 12px;
-text-shadow: 1px 1px white;}
-
-.expandableTrialDetails:hover .expandIcon {
-    color:white;
-    text-shadow: 1px 1px #666;
-}
-
-.siteLocationTable{border: 1px solid #CCC;}
-.siteLocationTable th { padding: 0.3em; background-color: #e8e8e8; margin-bottom: 12px; overflow: auto; text-transform: capitalize; font-weight:normal; font-size: 16px; color: #666; border:1px solid #e8e8e8;}
-.siteLocationTable th span { padding-left: 10px; margin-right: 5px; margin-left: 10px;background: url('https://foxtrialfinder.michaeljfox.org/images/findtrial/trial-details/nav_carrot_sub.png') 0 4px no-repeat; }
-.siteLocationTable td {border:none;}
-.siteLocationTable th.first{width:60%;}
-
-.criteria { position: relative; border-top: 1px dashed #CCC; margin-top: 20px; /*padding-top: 20px;*/ }
-.criteria h4 { float: left; }
-h4.detailDesc { font-size: 16px; margin-bottom: 5px; }
-ul.criteriaList { clear: left; line-height: 2em; margin-left:30px; }
-ul.criteriaList li { padding: 5px 5px 0px 10px; list-style:circle; }
-ul.criteriaList li.alt { background-color: #FFEFCC; }
-ul.criteriaList a { color: #f47522; display: block; font-size: 13px; font-weight: bold; height: 16px; line-height: 16px; background: url("/images/global/button_carrot.gif") no-repeat 0 0; padding: 0 0 0 23px; margin: 2px 0; }
-ul.criteriaList a:hover { background-position: left bottom; }
-
-/*ul.addlInfoList li { padding: 5px 5px 5px 10px; margin-bottom: 2px; background-color: #FFEFCC; }*/
-ul.addlInfoList li { padding: 5px 5px 5px 0px; margin-bottom: 2px; }
-
-ul{
-margin:0;
-list-style: none;
-}
-li{
-	margin:0;
-}
-.hoverableLink:hover{
-	background-color: #ECECEC !important;
-	cursor:pointer;
-}
-.trialResults{
-	margin-bottom: 2em;
-	background: #F6F6F6;
-	padding: 20px;
-}
-.trialResults a:hover{
-	text-decoration: none;
-}
-.inline p,
-.inline h4{
-font-size: .9em;
-left: 1.2em;
-}
-.inline p{
-	margin-right: .5em;
-
-}
-.trialResults p,
-.trialResults h4{
-  display: inline;
-  position: relative;
-	left: 1em;
-}
-
-#td_contents{
-/*	width:70%;*/
-	float:left;
-}
-#rightSideCallouts{
-	float:right;
-	width:25%;
-}
-.tdEllipsis{
-	width:610px;
-	overflow:hidden;
-	white-space:nowrap;
-	text-overflow: ellipsis;
-}
-
-#exclusionCriteria h4{
-	text-transform: uppercase;
-}
-
-.whitesmokeBorder {
-	border: 2px solid #F5F5F5;
-}
-.td_purpose{
-	padding: 10px 30px;
-	color: #666;
-}
