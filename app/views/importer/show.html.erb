@@ -12,6 +12,7 @@
 <br>
 <%= link_to "Delete All Trials", importer_delete_all_path, method: :post %><br>
 <br>
+
 <%= link_to "View All Trials", trials_path %><br>
 
 <br>
@@ -21,11 +22,16 @@
 <hr>
 <h3>Sites Not Geocoded</h3>
 <% @sites.not_geocoded.each do |site| %>
-	<%= link_to truncate(site.trial.title, :length => 50), site.trial %>
-	<%= "(#{site.facility})" %>
+
+	<% unless site.trial.nil? %>
+		<%= link_to truncate(site.trial.title, :length => 50), site.trial %>
+		<%= "(#{site.facility})" %>
+	<% end %>
+
 	<br>
 <% end %>
 <br>
+
 
 <!-- 
 <%= link_to "Send new match emails", importer_new_match_alert_path %>
