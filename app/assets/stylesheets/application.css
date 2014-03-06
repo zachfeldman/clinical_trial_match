@@ -28,14 +28,11 @@
 }
 
 /* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
+@media screen and (max-width: 767px) {
   .search_bar{
     width: 24% !important;
     margin: 0px 20px !important;
     padding: 2em !important;
-  }
-  search_results{
-    width: 60% !important;
   }
   input[type=text], 
   input[type=email] {

@@ -16,6 +16,13 @@
 	}
 
 }
+
+@media screen and (max-width: 767px) {
+.search_results{
+    width: 60% !important;
+  }
+}
+
 td{
 	overflow: hidden;
 	text-overflow: ellipsis;
